@@ -38,7 +38,7 @@ public class RequestRoutingFilter extends ForwardRoutingFilter {
         String path = exchange.getRequest().getPath().toString();
 //        Mono<PassthroughURL> passthroughURL = passthroughURLService.getByRouteIdAndRequestUrl(r.getId(), path);
         String targetUri = r.getUri()+path;
-//        System.out.println(r.getId()+" "+path);
+        System.out.println(r.getId()+" "+targetUri);
         try {
             exchange.getAttributes().put(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR, new URI(targetUri));
         } catch (URISyntaxException e) {
