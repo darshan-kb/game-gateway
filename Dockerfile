@@ -10,4 +10,4 @@ COPY target/gateway-0.0.1-SNAPSHOT.jar gateway.jar
 EXPOSE 8081
 
 # Command to run the JAR
-ENTRYPOINT ["java", "-jar", "authorization-server.jar"]
+ENTRYPOINT ["java", "-jar", "gateway.jar"]
