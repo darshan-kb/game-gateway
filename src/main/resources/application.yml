@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://192.168.137.1:3006, http://192.168.137.1:8081, http://61.2.101.140:3006"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      routes:
+        - id: testroute2
+          uri: https://httpbin.org/get
+          predicates:
+            - Path=/test2/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1   # Zero rate limit
+                redis-rate-limiter.burstCapacity: 1   # Zero burst capacity
+
+logging:
+  level:
+    org.springframework.cloud.gateway.filter.ratelimit: DEBUG
